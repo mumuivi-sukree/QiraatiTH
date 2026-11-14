@@ -1,0 +1,341 @@
+
+---
+interface Phrase {
+  image: string;
+  alt?: string;
+  audio?: string;
+  label?: string;
+}
+
+interface Props {
+  lesson?: string;
+  teacher?: Phrase[];
+  practice?: Phrase[];
+  instruction?: string;
+  alphabet?: Phrase[];
+}
+
+const {
+  lesson = "บทเรียนที่ 1",
+  teacher = [],
+  practice = [],
+  instruction = "",
+  alphabet = []
+} = Astro.props;
+---
+
+<div class="lesson">
+
+  <!-- Lesson Header -->
+  <header class="lesson-header">
+    <span class="lesson-badge mobile-only">
+      <strong>กดปุ่ม 3ขีด มุมขวาบนของจอ</strong> เพื่อเลือก *เล่ม/หน้า* ที่ต้องการ
+    </span>
+  </header>
+
+  <!-- Section 1: Teacher -->
+  {teacher.length > 0 && (
+    <section class="lesson-section teacher">
+      <div class="section-label">
+        <span class="number">1</span>
+        <span>ครูอ่านเป็นตัวอย่าง ให้นักเรียนจำรูปการเขียนและอ่านตามให้ถูกต้อง</span>
+      </div>
+
+      <div class="phrase-grid">
+        {teacher.map((item) => (
+          <div class="phrase">
+            {item.label && (
+              <span class="phrase-label">{item.label}</span>
+            )}
+
+            <img
+              class="phrase-image"
+              src={item.image}
+              alt={item.alt || "วลีภาษาอาหรับ"}
+              loading="lazy"
+            />
+
+            {item.audio && (
+              <audio controls preload="none" src={item.audio}>
+                Your browser does not support audio.
+              </audio>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+  <!-- Section 2: Instruction -->
+  {instruction && (
+    <section class="lesson-section instruction">
+      <div class="section-label">
+        <span class="number">2</span>
+        <span>คำแนะนำ</span>
+      </div>
+
+    <div class="instruction-content" set:html={instruction}></div>
+    </section>
+  )}
+  <!-- Section 2: Student Practice -->
+  {practice.length > 0 && (
+    <section class="lesson-section practice">
+      <div class="section-label">
+        <span class="number">3</span>
+        <span>นักเรียนอ่านเอง ให้ครูฟัง ครูตรวจความถูกต้อง <br/ >หรือกดปุ่มเล่นเสียงเทียบกัน(กรณีทบทวนด้วยตัวเอง)</span>
+      </div>
+
+      <div class="phrase-grid">
+        {practice.map((item) => (
+          <div class="phrase">
+            {item.label && (
+              <span class="phrase-label">{item.label}</span>
+            )}
+
+            <img
+              class="phrase-image"
+              src={item.image}
+              alt={item.alt || "แบบฝึกอ่านภาษาอาหรับ"}
+              loading="lazy"
+            />
+
+            {item.audio && (
+              <audio controls preload="none" src={item.audio}>
+                Your browser does not support audio.
+              </audio>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <p class="hint">
+        อ่านออกเสียงด้วยตนเอง แล้วฟังเสียงเพื่อเปรียบเทียบ
+      </p>
+    </section>
+  )}
+
+
+  <!-- Section 4: Alphabet -->
+  {alphabet.length > 0 && (
+    <section class="lesson-section alphabet">
+      <div class="section-label">
+        <span class="number">4</span>
+        <span>พยัญชนะ สระ และเครื่องหมาย</span>
+      </div>
+
+      <div class="alphabet-grid">
+        {alphabet.map((item) => (
+          <div class="phrase alphabet-item">
+            {item.label && (
+              <span class="phrase-label">{item.label}</span>
+            )}
+
+            <img
+              class="phrase-image"
+              src={item.image}
+              alt={item.alt || "พยัญชนะหรือเครื่องหมายภาษาอาหรับ"}
+              loading="lazy"
+            />
+
+            {item.audio && (
+              <audio controls preload="none" src={item.audio}>
+                Your browser does not support audio.
+              </audio>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+</div>
+
+<style>
+.lesson {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--sl-color-text);
+}
+
+/* Header */
+
+.lesson-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lesson-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.lesson-badge {
+  background: #dcfce7;
+  color: #166534;
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* Section */
+
+.lesson-section {
+  border-radius: 14px;
+  padding: 1rem;
+  border: 1px solid var(--sl-color-gray-5);
+}
+
+.teacher {
+  background: rgba(45, 160, 95, 0.08);
+}
+
+.practice {
+  background: rgba(50, 120, 220, 0.07);
+}
+
+.instruction {
+  background: rgba(210, 155, 45, 0.10);
+}
+
+.alphabet {
+  background: rgba(140, 110, 190, 0.09);
+}
+
+/* Section Label */
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.number {
+  display: flex;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background: var(--sl-color-bg);
+  border-radius: 50%;
+  font-size: 0.85rem;
+}
+
+/* Phrase Grid: Section 1 and 2 */
+
+.phrase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  direction: rtl;
+}
+
+/* Individual Phrase */
+
+.phrase {
+  background: var(--sl-color-bg);
+  border-radius: 10px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.phrase-label {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+}
+
+/* Arabic Image */
+
+.phrase-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 4rem;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Audio */
+
+.phrase audio {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: 40px;
+  margin-top: 0.2rem;
+}
+
+/* Hint */
+
+.hint {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  text-align: center;
+  margin: 1rem 0 0;
+}
+
+/* Instruction */
+
+.instruction-content {
+  line-height: 1.8;
+}
+
+/* Section 4 Grid */
+
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  direction: rtl;
+}
+
+.alphabet-item {
+  min-height: 100px;
+}
+
+/* Tablet */
+
+@media (min-width: 640px) {
+  .phrase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .alphabet-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 900px) {
+  .phrase-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .alphabet-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* แสดงเฉพาะมือถือ */
+.mobile-only {
+  display: inline-block;
+}
+
+@media (min-width: 640px) {
+  .mobile-only {
+    display: none;
+  }
+}
+</style>

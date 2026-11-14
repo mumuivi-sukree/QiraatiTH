@@ -1,40 +1,37 @@
+
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: กีรออาตี
+description: เว็บไซต์ฝึกอ่านอัลกุรอานตามหลักสูตรกีรออาตี ที่นิยมแพร่หลาย เป็นที่ยอมรับว่าได้ผลเร็ว มีประสิทธิภาพสูง เหมาะกับคนทุกวัย
+template: splash
+editUrl: false
+
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  title: ฝึกอ่านอัลกุรอาน ด้วยหลักสูตรกีรออาตี
+  tagline: เรียนรู้ทีละขั้น เรียนรู้เร็ว ฝึกได้ทั้งเด็กและผู้ใหญ่
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: เริ่มเรียนเล่มที่ 1
+      link: /qiraati-1/q1page01/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+      variant: primary
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import BookGrid from '../../components/BookGrid.astro';
 
-## Next steps
+## วัตถุประสงค์ของเว็บไซต์
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+เว็บไซต์กีรออาตี จัดทำขึ้นเพื่อเป็นสื่อเสริมการเรียนรู้ ช่วยให้นักเรียนทบทวนบทเรียนและฝึกอ่านอัลกุรอานด้วยตนเอง หลังจากได้เรียนกับครูผู้สอนแล้ว
+
+อีกทั้งยังเป็นทางเลือกสำหรับผู้ที่สนใจเรียนหลักสูตรกีรออาตี แต่มีข้อจำกัดในการเข้าถึงครูผู้สอนหรือสถานที่เรียน
+
+**อย่างไรก็ตาม การฝึกอ่านด้วยตนเองไม่สามารถทดแทนครูผู้สอนได้ ผู้เรียนควรหาโอกาสให้ครูหรือผู้รู้รับฟังและตรวจสอบการอ่าน เพื่อให้สามารถอ่านได้อย่างถูกต้องตามหลักการอ่านอัลกุรอาน**
+
+## หนังสือกีรออาตี
+
+หลักสูตรกีรออาตี มีทั้งหมด 5 เล่ม เรียงลำดับจากง่ายไปยาก ต้องเรียนต่อเนื่องครบทั้ง 5 เล่ม 
+อินชาอัลลอฮฺ จะสามารถอ่านอัลกุรอานได้ถูกต้องตามหลักตัจวีด
+
+<BookGrid />
+
+
+
+

@@ -1,0 +1,31 @@
+---
+interface Props {
+  src: string;
+  label?: string;
+}
+
+const { src, label } = Astro.props;
+---
+
+<button class="audio-btn" onclick={`new Audio('${src}').play()`} title="ฟังเสียงอ่าน">
+  🔊 {label && <span>{label}</span>}
+</button>
+
+<style>
+  .audio-btn {
+    background: #e6f4ea;
+    border: 1px solid #137333;
+    color: #137333;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.2s;
+  }
+  .audio-btn:hover {
+    background: #ceead6;
+  }
+</style>
