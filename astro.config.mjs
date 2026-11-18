@@ -9,6 +9,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Qiraati',
+      description: 'เว็บไซต์ทบทวนบทเรียนกีรออาตี ฝึกอ่านอย่างถูกต้อง ตามหลักสูตรกีรออาตี เพื่อให้ผู้เรียนสามารถอ่านอัลกุรอานได้อย่างถูกต้อง',
       sidebar: [
         {
           label: 'หนังสือเรียนกีรอาตี',
@@ -44,6 +45,13 @@ export default defineConfig({
             content: 'website',
           },
         },
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:description',
+            content: 'ทบทวนบทเรียนกีรออาตีออนไลน์ แบบฝึกอ่านอัลกุรอาน ตามหลักสูตรกีรออาตี',
+          },
+        },        
         {
           tag: 'meta',
           attrs: {
