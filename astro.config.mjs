@@ -48,7 +48,7 @@ export default defineConfig({
           tag: 'meta',
           attrs: {
             property: 'og:image',
-            content: 'https://qiraatith.com/QiraatithOG.png',
+            content: 'https://qiraatith.com/QiraatithOG.jpg',
           },
         },
         {
