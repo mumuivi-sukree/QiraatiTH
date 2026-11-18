@@ -36,6 +36,41 @@ export default defineConfig({
           ],
         },
       ],
+      head: [
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:type',
+            content: 'website',
+          },
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:image',
+            content: 'https://qiraatith.com/QiraatithOG.png',
+          },
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:image:width',
+            content: '1200',
+          },
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:image:height',
+            content: '630',
+          },
+        },
+      ],
+      logo: {
+        src: './src/assets/qiraatith.png',
+        alt: 'Qiraati - กีรออาตี',
+        replacesTitle: false,
+      }
     }),
   ],
 });
