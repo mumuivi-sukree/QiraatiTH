@@ -1,0 +1,9 @@
+/* จัดปุ่มสารบัญให้อยู่กึ่งกลางหน้าจอมือถือ */
+@media (max-width: 49.99rem) {
+  mobile-starlight-toc
+  #starlight__mobile-toc
+  > summary
+  > .toggle {
+    margin-inline: auto;
+  }
+}

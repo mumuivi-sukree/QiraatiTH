@@ -45,7 +45,7 @@ const {
         {teacher.map((item) => (
           <div class="phrase">
             {item.label && (
-              <span class="phrase-label">{item.label}</span>
+                <span class="phrase-label" set:html={item.label} />
             )}
 
             <img
@@ -88,7 +88,7 @@ const {
         {practice.map((item) => (
           <div class="phrase">
             {item.label && (
-              <span class="phrase-label">{item.label}</span>
+               <span class="phrase-label" set:html={item.label} />
             )}
 
             <img
@@ -126,7 +126,7 @@ const {
         {alphabet.map((item) => (
           <div class="phrase alphabet-item">
             {item.label && (
-              <span class="phrase-label">{item.label}</span>
+               <span class="phrase-label" set:html={item.label} />
             )}
 
             <img
@@ -253,6 +253,7 @@ const {
 .phrase-label {
   font-size: 0.8rem;
   color: var(--sl-color-gray-2);
+  text-align: left;
 }
 
 /* Arabic Image */
