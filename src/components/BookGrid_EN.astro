@@ -1,0 +1,281 @@
+
+---
+const books = [
+  {
+    number: '1',
+    title: 'Qiraati BOOK 1',
+    subtitle: 'Update daily...',
+    level: 'BEGINNER',
+    color: '#174A38',
+    accent: '#E8D9AE',
+    href: '/qiraati-1/q1page01/',
+  },
+  {
+    number: '2',
+    title: 'Qiraati BOOK 2',
+    subtitle: 'Not Ready',
+    level: 'LEARNING',
+    color: '#315B75',
+    accent: '#E6DAB8',
+    href: '/',
+  },
+  {
+    number: '3',
+    title: 'Qiraati BOOK 3',
+    subtitle: 'Not Ready',
+    level: 'PRACTICE',
+    color: '#967044',
+    accent: '#FFF0CF',
+    href: '/',
+  },
+  {
+    number: '4',
+    title: 'Qiraati BOOK 4',
+    subtitle: 'Not Ready',
+    level: 'FLUENCY',
+    color: '#66547E',
+    accent: '#EDE0F5',
+    href: '/',
+  },
+  {
+    number: '5',
+    title: 'Qiraati BOOK 5',
+    subtitle: 'Not Ready',
+    level: 'ADVANCED',
+    color: '#376C69',
+    accent: '#E1F1E7',
+    href: '/',
+  },
+];
+---
+
+<div class="book-grid not-content">
+  {books.map((book) => (
+    <a
+      class="book-card"
+      href={book.href}
+      aria-label={`let go to lessen${book.title}`}
+    >
+      <div
+        class="book-cover"
+        style={`--cover: ${book.color}; --accent: ${book.accent}`}
+      >
+        <div class="cover-top">
+          QIRAATI
+          <span>BOOK SERIES</span>
+        </div>
+
+        <div class="cover-art">
+          <div class="ornament">
+            <span>✦</span>
+            <span class="arabic">قِرَاءَتِي</span>
+            <span>✦</span>
+          </div>
+
+          <div class="cover-title">Qiraati <strong>{book.number}</strong></div>
+          <div class="cover-subtitle">
+            step-by-step Quran reading
+          </div>
+        </div>
+
+      </div>
+
+      <div class="book-info">
+        <strong>{book.title}</strong>
+        <span>{book.subtitle}</span>
+        <span class="book-link">
+          Begin <span aria-hidden="true">→</span>
+        </span>
+      </div>
+    </a>
+  ))}
+</div>
+
+<style>
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-block: 1.5rem 2rem;
+  }
+
+  .book-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    min-width: 0;
+  }
+
+  .book-cover {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 0.65rem;
+    padding: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--accent);
+    background:
+      radial-gradient(
+        circle at 50% 48%,
+        rgba(255,255,255,.10),
+        transparent 58%
+      ),
+      var(--cover);
+    box-shadow:
+      0 4px 10px rgba(0,0,0,.12),
+      inset 0 0 0 1px rgba(255,255,255,.22);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .book-cover::before {
+    content: "";
+    position: absolute;
+    inset: 5%;
+    border: 1px solid var(--accent);
+    opacity: .65;
+    pointer-events: none;
+  }
+
+  .book-cover::after {
+    content: "";
+    position: absolute;
+    width: 65%;
+    aspect-ratio: 1;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    opacity: .13;
+    top: 25%;
+    left: 17.5%;
+    box-shadow:
+      0 0 0 10px transparent,
+      0 0 0 11px var(--accent);
+    pointer-events: none;
+  }
+
+  .cover-top,
+  .cover-bottom,
+  .cover-art {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .2rem;
+    font-size: clamp(.48rem, 1.3vw, .7rem);
+    font-weight: 700;
+    letter-spacing: .1em;
+  }
+
+  .cover-top span {
+    font-size: .65em;
+    font-weight: 400;
+  }
+
+  .cover-art {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .65rem;
+  }
+
+  .ornament {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    font-size: 1rem;
+  }
+
+  .arabic {
+    font-family: "Noto Naskh Arabic", "Amiri", serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.5;
+  }
+
+  .cover-title {
+    color: #fff;
+    font-size: clamp(1rem, 3vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: .15em;
+  }
+
+  .cover-subtitle {
+    color: #fff;
+    font-size: clamp(.55rem, 1.5vw, .8rem);
+    text-align: center;
+  }
+
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    font-size: clamp(.5rem, 1.3vw, .7rem);
+    letter-spacing: .1em;
+  }
+
+  .cover-bottom strong {
+    color: #fff;
+    font-size: clamp(1.5rem, 4vw, 2.3rem);
+    line-height: 1;
+  }
+
+  .book-info {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding: .7rem .15rem;
+  }
+
+  .book-info strong {
+    font-size: 1rem;
+  }
+
+  .book-info > span:not(.book-link) {
+    font-size: .8rem;
+    opacity: .7;
+  }
+
+  .book-link {
+    color: var(--sl-color-text-accent);
+    font-size: .85rem;
+    font-weight: 600;
+    margin-top: .3rem;
+  }
+
+  .book-card:hover .book-cover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 20px rgba(0,0,0,.18);
+  }
+
+  .book-card:focus-visible {
+    outline: 3px solid var(--sl-color-text-accent);
+    outline-offset: 4px;
+    border-radius: .65rem;
+  }
+
+  @media (min-width: 640px) {
+    .book-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .book-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .book-cover {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://qiraatith.com/sitemap-index.xml
+
+# AI Search
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
